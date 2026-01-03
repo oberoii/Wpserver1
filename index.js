@@ -13,7 +13,7 @@ import cors from 'cors';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 20065;
 const upload = multer({ dest: 'uploads/' });
 
 app.use(cors());
@@ -584,4 +584,5 @@ app.listen(PORT, '0.0.0.0', async () => {
   console.log(chalk.green(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`));
   
   await restoreSessions();
+
 });
