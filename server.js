@@ -577,7 +577,8 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, '0.0.0.0', async () => {
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
   console.log(chalk.green(`\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`));
   console.log(chalk.green(`✅ Server running on port ${PORT}`));
   console.log(chalk.cyan(`🌐 CORS enabled for all origins`));
