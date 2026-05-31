@@ -14,6 +14,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
+await restoreSessions();
+
+app.listen(PORT);
 const upload = multer({ dest: 'uploads/' });
 
 app.use(cors());
@@ -577,13 +580,14 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  await restoreSessions();
   console.log(`Server running on port ${PORT}`);
   console.log(chalk.green(`\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`));
   console.log(chalk.green(`✅ Server running on port ${PORT}`));
   console.log(chalk.cyan(`🌐 CORS enabled for all origins`));
   console.log(chalk.green(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`));
   
+  async function startServer() {
   await restoreSessions();
-
-});
+}
